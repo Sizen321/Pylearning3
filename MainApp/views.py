@@ -22,13 +22,14 @@ items = [
 
 
 def home(request):
-    print(f'{vars(request) = }')
-    text = """
-    <h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>Меренков Н.Е.</i><br><br>
-    <a href=http://127.0.0.1:8000/items>Перейти на страницу товаров</a>
-    """
-    return HttpResponse(text)
+    # print(f'{vars(request) = }')
+    # text = """
+    # <h1>"Изучаем django"</h1>
+    # <strong>Автор</strong>: <i>Меренков Н.Е.</i><br><br>
+    # <a href=http://127.0.0.1:8000/items>Перейти на страницу товаров</a>
+    # """
+    # return HttpResponse(text)
+    return render(request, "index.html")
 
 def about(request):
     text = F"""
@@ -42,8 +43,8 @@ def about(request):
 
 def item(request):
     items_ = [f"<b>Список товаров:</b><br><ol>"]
-    for i in items:
-        items_.append(f"<il><b>{i.get("id")}. </b><a href='http://127.0.0.1:8000/item/{i.get("id")}'>{i.get("name")}</a></il><br>")
+    for item in items:
+        items_.append(f"<il><b>{item.get("id")}. </b><a href='http://127.0.0.1:8000/item/{item.get("id")}'>{item.get("name")}</a></il><br>")
     return HttpResponse(items_) 
 
 def item_id(request, id_):
