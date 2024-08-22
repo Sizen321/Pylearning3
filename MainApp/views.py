@@ -29,7 +29,11 @@ def home(request):
     # <a href=http://127.0.0.1:8000/items>Перейти на страницу товаров</a>
     # """
     # return HttpResponse(text)
-    return render(request, "index.html")
+    context = {
+        "name": "Меренков Никита Евгеньевич",
+        "email": "sizen321@mail.ru"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text = F"""
