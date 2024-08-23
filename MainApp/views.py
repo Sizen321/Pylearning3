@@ -22,13 +22,6 @@ items = [
 
 
 def home(request):
-    # print(f'{vars(request) = }')
-    # text = """
-    # <h1>"Изучаем django"</h1>
-    # <strong>Автор</strong>: <i>Меренков Н.Е.</i><br><br>
-    # <a href=http://127.0.0.1:8000/items>Перейти на страницу товаров</a>
-    # """
-    # return HttpResponse(text)
     context = {
         "name": "Меренков Никита Евгеньевич",
         "email": "sizen321@mail.ru"
@@ -46,10 +39,10 @@ def about(request):
     return HttpResponse(text)
 
 def item(request):
-    items_ = [f"<b>Список товаров:</b><br><ol>"]
-    for item in items:
-        items_.append(f"<il><b>{item.get("id")}. </b><a href='http://127.0.0.1:8000/item/{item.get("id")}'>{item.get("name")}</a></il><br>")
-    return HttpResponse(items_) 
+    context = {
+        "items": items
+    }
+    return render(request, "item.html", context) 
 
 def item_id(request, id_):
     for item in items:
