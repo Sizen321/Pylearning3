@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>About</title>
 </head>
 <body>
-    <h1>Список товаров:</h1>
+    <h1> О сайте: </h1>
 
-    {% for item in items %}
-        <il><b>{{ item.id }}. </b><a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}</a></il><br>
-    {% endfor %}
+    Имя: <b>{{ author.Имя }}</b><br>
+    Отчество: <b>{{ author.Отчество }}</b><br>
+    Фамилия:  <b>{{ author.Фамилия }}</b><br>
+    Телефон: <b>{{ author.Телефон }}</b><br>
+    Email: <b>{{ author.Email }}</b><br>
+
     <br><br>
     / <a href='http://127.0.0.1:8000'> Home </a> 
     / <a href='http://127.0.0.1:8000/items'> Items </a>
     / <a href='http://127.0.0.1:8000/about'> About </a>
-    /
 </body>
 </html>

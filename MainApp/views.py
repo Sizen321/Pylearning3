@@ -29,14 +29,10 @@ def home(request):
     return render(request, "index.html", context)
 
 def about(request):
-    text = F"""
-    Имя: <b>{author["Имя"]}</b><br>
-    Отчество: <b>{author['Отчество']}</b><br>
-    Фамилия:  <b>{author['Фамилия']}</b><br>
-    Телефон: <b>{author['Телефон']}</b><br>
-    Email: <b>{author['Email']}</b><br>
-    """
-    return HttpResponse(text)
+    context = {
+        "author": author
+    }
+    return render (request, "about.html", context)
 
 def item(request):
     context = {
@@ -45,13 +41,11 @@ def item(request):
     return render(request, "item.html", context) 
 
 def item_id(request, id_):
-    for item in items:
-        if item['id'] == id_:
-            text = f"""
-            <b>Товар:</b> {item.get("name")} <br>
-            <b>Количество:</b> {item.get("quantity")} <br><br>
-            <a href=http://127.0.0.1:8000/items>Вернуться на страницу товаров</a>
-            """
-            return HttpResponse(text)
+    for item in items: 
+        if item["id"] == id_:
+            context = {
+                "item": item
+            }   
+            return render(request, "item_id.html", context)
     return HttpResponseNotFound(f"""<b>Товар с id={id_} не найден!</b><br><br>
                                 <a href=http://127.0.0.1:8000/items>Вернуться на страницу товаров</a>""")

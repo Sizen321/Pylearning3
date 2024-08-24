@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>{{ item.name }}</title>
+</head>
+<body>
+
+    <b>Товар:</b> {{ item.name }} <br>
+    <b>Количество:</b> {% if item.quantity == 0 %} Товар отсутствует
+    {% else %} {{ item.quantity }}
+    {% endif %}<br><br>
+    <a href=http://127.0.0.1:8000/items>Вернуться на страницу товаров</a>
+
+    <br><br>
+    / <a href='http://127.0.0.1:8000'> Home </a> 
+    / <a href='http://127.0.0.1:8000/items'> Items </a>
+    / <a href='http://127.0.0.1:8000/about'> About </a>
+</body>
+</html>
