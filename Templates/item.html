@@ -9,7 +9,7 @@
     <h1>Список товаров:</h1>
 
     {% for item in items %}
-        <il><b>{{ item.id }}. </b><a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}</a></il><br>
+        <b>{{ item.id }}. </b><a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}</a><br>
     {% endfor %}
     <br><br>
     / <a href='http://127.0.0.1:8000'> Home </a> 
