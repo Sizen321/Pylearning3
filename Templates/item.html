@@ -3,18 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Список товаров</title>
 </head>
 <body>
+    <style type="text/css">
+        .block {
+            width: auto;
+            padding: 5px;
+            display: inline-block;
+            border: solid 1px black;
+            text-align: center;
+            margin: 0 auto;
+        }
+        .menu {
+            align-self: center;
+            margin: auto;
+        }
+    </style>
+        
     <h1>Список товаров:</h1>
-
+    
     {% for item in items %}
-        <b>{{ item.id }}. </b><a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}</a><br>
+    <div class="block">
+        <a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}<br>
+        Количество: {% if item.count == 0 %} 
+                        Товара нет на складе 
+                    {% else %} 
+                        {{ item.count }} 
+                    {% endif %}</a><br>
+    </div>
     {% endfor %}
+
     <br><br>
-    / <a href='http://127.0.0.1:8000'> Home </a> 
-    / <a href='http://127.0.0.1:8000/items'> Items </a>
-    / <a href='http://127.0.0.1:8000/about'> About </a>
-    /
+    <div class="menu">
+    / <a href='/'> Home </a> 
+    / <a href='/items'> Items </a>
+    / <a href='/about'> About </a>
+    /</div>
 </body>
 </html>
