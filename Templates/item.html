@@ -1,31 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Список товаров</title>
-</head>
-<body>
-    <style type="text/css">
-        .block {
-            width: auto;
-            padding: 5px;
-            display: inline-block;
-            border: solid 1px black;
-            text-align: center;
-            margin: 0 auto;
-        }
-        .menu {
-            align-self: center;
-            margin: auto;
-        }
-    </style>
-        
-    <h1>Список товаров:</h1>
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Items list
+{% endblock%}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/style.css"%}">
+{% endblock style %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <h2>Список товаров:</h2>
     
     {% for item in items %}
     <div class="block">
-        <a href="http://127.0.0.1:8000/item/{{ item.id }}">{{ item.name }}<br>
+        <a href="{% url 'item_id' item.id %}">{{ item.name }}<br>
         Количество: {% if item.count == 0 %} 
                         Товара нет на складе 
                     {% else %} 
@@ -35,10 +29,4 @@
     {% endfor %}
 
     <br><br>
-    <div class="menu">
-    / <a href='/'> Home </a> 
-    / <a href='/items'> Items </a>
-    / <a href='/about'> About </a>
-    /</div>
-</body>
-</html>
+    {% endblock content %}
