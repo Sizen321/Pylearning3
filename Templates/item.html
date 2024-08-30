@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    Items list
+{% endblock%}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/style.css"%}">
+{% endblock style %}
+
+
+{% block content %}
+    {{ block.super }}
+
+    <h2>Список товаров:</h2>
+    
+    {% for item in items %}
+    <div class="block">
+        <a href="{% url 'item_id' item.id %}">{{ item.name }}<br>
+        Количество: {% if item.count == 0 %} 
+                        Товара нет на складе 
+                    {% else %} 
+                        {{ item.count }} шт.
+                    {% endif %}</a><br>
+    </div>
+    {% endfor %}
+
+    <br><br>
+    {% endblock content %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block title %}
+    {{item.name}}
+{% endblock%}
+
+{% block style %}
+    {{ block.super }}
+    <link rel="stylesheet" href="{% static "css/style.css"%}">
+{% endblock style %}
+
+{% block content %}
+    {{ block.super }}
+    <br>
+    <div><b>Товар: </b>{{ item.name }} </div>
+    <div><b>Бренд: </b>{{ item.brand }}</div>
+    <div><b>Количество: </b>{{ item.count | default:"Товара нет на складе" }}</div>
+    <div><b>Описание: </b>{{ item.description }}</div>
+    <div><i><b>Цвета: </b></i>
+    {% if colors %}
+    <ul class='ul_no_mark'>    
+        {% for color in colors %}
+            <li><div class='div_color' style="background-color: {{ color.name }}"></div>&nbsp;&nbsp {{ color.name }} </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+        <br> Данных по цветам нет
+    {% endif %}</div>
+    <p><a href="{% url 'items' %}"> Назад к списку товаров </a></p>
+{%endblock%}
